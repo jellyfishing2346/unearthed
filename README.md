@@ -2,6 +2,8 @@
 
 A modern, full-stack gift discovery web app built with Vite (Vanilla JS), Express, and Node.js. Find the perfect gift for anyone, with a beautiful card-based UI and dynamic detail pages!
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-unearthed.onrender.com-blue?style=for-the-badge)](https://unearthed.onrender.com/)
+
 ![UnEarthed Screenshot](./client/public/logo.png)
 
 ## 🚀 Features
