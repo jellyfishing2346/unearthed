@@ -1,19 +1,25 @@
 import express from 'express'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import giftsRouter from './routes/gifts.js'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 
+// Serve static files from client/dist (Vite build)
+app.use(express.static(path.join(__dirname, '../client/dist')))
+
 // Serve static files from client/public
-app.use('/public', express.static('../client/public'))
+app.use('/public', express.static(path.join(__dirname, '../client/public')))
 // Serve static files from client/public/scripts
-app.use('/scripts', express.static('../client/public/scripts'))
+app.use('/scripts', express.static(path.join(__dirname, '../client/public/scripts')))
 
 // Add /gifts endpoint
 app.use('/gifts', giftsRouter)
 
-// Root route
-app.get('/', (req, res) => {
-  res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">UnEarthed API</h1>')
+// Fallback: serve index.html for any other route (SPA support)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
 })
 
 const PORT = process.env.PORT || 3001
