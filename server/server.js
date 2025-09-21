@@ -1,4 +1,5 @@
 import express from 'express'
+import giftsRouter from './routes/gifts.js'
 
 const app = express()
 
@@ -6,6 +7,9 @@ const app = express()
 app.use('/public', express.static('../client/public'))
 // Serve static files from client/public/scripts
 app.use('/scripts', express.static('../client/public/scripts'))
+
+// Add /gifts endpoint
+app.use('/gifts', giftsRouter)
 
 // Root route
 app.get('/', (req, res) => {
