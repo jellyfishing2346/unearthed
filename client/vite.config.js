@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    outDir: '../server/public',
+    outDir: 'dist', // Output to client/dist for deployment
     emptyOutDir: true
   },
   server: {
